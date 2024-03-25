@@ -1,0 +1,34 @@
+.page {
+    flex: 1 1 auto;
+    position: relative;
+    
+    // .page__shop
+
+    &__shop { 
+        padding: 100px 0px;
+    }
+    // .page__map-gallery
+
+    &__map-gallery { 
+        scroll-snap-align: start;
+        padding: 100px 0px;
+    }
+
+    // .page__tournament-board
+
+    &__tournament-board { 
+        scroll-snap-align: start;
+        padding: 100px 0px;
+        width: 100%;
+        background-color: $lightMainColor;
+    }
+
+    // .page__crew
+    &__crew { 
+        scroll-snap-align: start;
+        padding: 100px 0px;
+        width: 100%;
+        background-color: $lightMainColor;
+    }
+
+}

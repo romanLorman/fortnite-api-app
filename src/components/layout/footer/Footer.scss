@@ -1,0 +1,54 @@
+.footer {
+    letter-spacing: 1.5px;
+    padding: 20px 0;
+    // .footer__container
+    
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // .footer__social
+
+    &__social {
+    }
+
+    // .footer__copy
+
+    &__copy {
+        color: $lighterColor;
+        width: 100%;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+}
+.social {
+
+    // .social__icon
+
+    &__icon {
+    }
+
+    // .social__info
+
+    &__info {
+        & span{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bolder;
+        }
+    
+    }
+
+    // .social__item
+
+    &__item {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+}

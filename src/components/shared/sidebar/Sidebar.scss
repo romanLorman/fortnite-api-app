@@ -1,0 +1,267 @@
+.menu-sidebar {
+    background-color: $secondColor;
+    border-radius: 5px;
+    position: relative; // z-index от расположения относительно элементов того же слоя!!!
+    
+    // .menu-sidebar__header
+
+    &__header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    // .menu-sidebar__title_large
+
+    &__title_large {
+        
+    }
+
+    // .menu-sidebar__list
+
+    &__list {
+        display: none;
+        & >li{ 
+            text-transform: capitalize;
+            &:first-child{
+                text-transform: uppercase;
+            }
+            &:not(:last-child) {
+                border-bottom: 1px solid #cc0ff291;
+            }
+            &:last-child:not(:hover){
+                border-radius: 0 0 5px 5px;
+            }
+        }
+        
+    }
+
+    // .menu-sidebar__item
+
+    &__item {
+        &:last-child{
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+        @media (min-width: #{$tablet + px}){
+            &:last-child{
+                border-radius: 0 0 0 5px;
+                border-bottom: solid 2px $secondColor;
+            }
+        }
+    }
+
+    // .menu-sidebar__link
+
+    &__link {
+        display: block;
+        cursor: pointer;
+        letter-spacing: 1px;
+        padding: 12px 20px;
+        position: relative;
+        transition: background-color 0.3s ease 0s;
+        @media (min-width: #{$tablet + px}){
+            &:hover{
+                background-color: $lightSecondColor;
+            }
+        }
+
+        &_nested{
+            &::after{
+                content: '';
+                position: absolute;
+                right: 20px;
+                height: 14px;
+                width: 14px;
+                background: url('../../../assets/icons/arrows-icon.svg') 0 0 no-repeat;
+                transition: all 0.3s ease 0s;
+            }
+            @media (min-width: #{$tablet + px}){
+                &:hover{
+                    background-color: none;
+                }
+                ._hover & {
+                    background-color: $lightSecondColor;
+                    &::after{
+                        content: '';
+                        transition: right 0.3s ease 0s;
+                        right: 7px;
+                    }
+                }
+            }
+            @media (max-width: #{$tablet + px}){
+                &::after{
+                    content: '';
+                    transform: rotate(90deg);
+                }
+                ._activeItem & {
+                    background-color: $lightSecondColor;
+                    &::after{
+                        content: '';
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+        }
+    }
+
+
+    // .menu-sidebar__sub-item
+
+    &__sub-item {
+        display: none;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0%;
+        z-index: -1;
+        width: 100%;
+        padding: 0 0 0 5px;
+        border-radius: 5px;
+        border: solid 2px $secondColor;
+        background-color: $lightSecondColor;
+        transition: left 0.3s ease 0s;
+        & .sub-item-sidebar__body {
+            display: none;
+        }
+
+        @media (min-width: #{$tablet + px}){
+            &_nested{
+                display: block;
+            }
+            ._hover & {
+                transition: all 0.3s ease 0s;
+                left: calc(100% - 10px);
+                border-radius: 0 5px 5px 0;
+                border-left: 0;
+                & .sub-item-sidebar__body {
+                    display: flex;
+                }
+            }
+        }
+        @media (max-width: #{$tablet + px}){
+            &_nested {
+                position: relative;
+                background-color: #cc0ff2c7;
+                z-index: 0;
+                padding: 0;
+                border-radius: 0;
+                height: 100px;
+                width: 100%;
+                border: 0;
+                & .sub-item-sidebar__body {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.sub-item-sidebar{
+    &__body{
+        padding: 15px;
+        cursor: pointer;
+        height: 100%;
+        background-color: inherit;
+        display: flex;
+        position: relative;
+        gap: 10px;
+        justify-content: space-between;
+        flex-direction: column;
+        @media (min-width: #{$tablet + px}){
+            &:hover{
+                background-color: #ce64e4c7;
+            }
+        }
+        @media (max-width: #{$tablet + px}){
+            background-color: #ce50e7c7;
+        }
+    }
+
+    &__icons{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        & div{
+            padding: 5px;
+            flex: 0 0 33.333%;
+        }
+        
+        & img{
+            width: 100%;
+        }
+        padding: 5px;
+        overflow-y: scroll;
+        @media (max-width: #{$tablet + px}){
+            position: absolute;
+            top: 0;
+            right:  0;
+            height: 100%;
+            width: 40%;
+            & div{
+                padding: 5px;
+                flex: 0 0 33.333%;
+            }
+            margin-right: 5px;
+        }
+    }
+
+    &__icon{
+        flex: 1 1 auto;;
+        & img{
+            width: 100%;
+        }
+        
+        @media (max-width: #{$tablet + px}){
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            & img{
+                width: auto;
+                height: 100%;
+            }
+      
+        }
+    }
+
+    &__text{
+        @media (max-width: #{$tablet + px}){    
+            margin-top: 5px;
+            width: 60%;
+            height: auto;
+            background: none;
+            padding: 10px;
+            color: $lighterColor;
+            overflow: visible;
+        }
+
+        @media (max-width: #{$tablet + px}){    
+            margin-top: 0;
+            padding: 4px;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -ms-line-clamp: 2;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            display: -webkit-box;
+            display: box;
+            word-wrap: break-word;
+            -webkit-box-orient: vertical;
+            box-orient: vertical;
+        }
+    }
+
+    &__title{
+        @media (max-width: #{$tablet + px}){    
+            width: 60%;
+            display: inline-block;
+        }
+    }
+
+    
+    
+}

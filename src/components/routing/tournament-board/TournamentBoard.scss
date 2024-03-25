@@ -1,0 +1,14 @@
+.tournament-board{
+  
+    &__container{
+
+    }
+
+    &__title_large{
+        @media (max-width: #{$mobileSmall + px}){
+            text-align: center;
+        }
+    }
+
+}
+

@@ -1,0 +1,27 @@
+// Fonts
+// $fontFamily: 'poppins', sans-serif;
+$fontFamily: "Luckiest Guy", cursive;
+$fontSize: 14px; 
+
+// Common colors
+$mainColor: #23296C; 
+$lightMainColor: #0E71D0; 
+$secondColor: #6D05DD;
+$lightSecondColor: #CB0FF2; 
+$darkColor: #27272f;
+$lightColor: #e4e7ec;
+$lighterColor: #e4e7ecb4;
+ 
+// Responsive settings
+$minWidth: 320;
+$maxWidth: 1440;
+$maxWidthContainer: 1400;
+$containerPadding: 30;
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Breakpoints
+$pc: $containerWidth; 
+$tablet: 991.98;
+$mobile: 767.98; 
+$mobileSmall: 479.98; 
+

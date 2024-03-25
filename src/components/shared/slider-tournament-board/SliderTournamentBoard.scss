@@ -1,0 +1,39 @@
+.slider-tournament-board{
+   
+    &__body {
+
+
+    }
+    &__head {
+
+    }
+
+    & .swiper-pagination-bullet{
+        opacity: 1;
+        background-color: $lighterColor;
+        height: 11px;
+        width: 11px;
+    }
+
+    & .swiper-pagination-bullet-active{
+        background-color: white !important;
+    }
+
+    & .swiper-button-prev, & .swiper-button-next  {
+
+        color: $lightColor;
+        @media (max-width: #{$mobile + px}){
+            & {
+                top: 65%;
+            }
+        }
+        @media (max-width: #{$mobileSmall + 150 + px}){
+            & {
+                top: 110%;
+                font-size: 20px;
+            }
+        }
+      
+    }
+}
+

@@ -1,0 +1,126 @@
+.slider-cards {
+    // .slider-cards__header
+
+    &__header {
+        display: flex;
+        position: relative;
+        padding-bottom: 10px;
+        align-items: center;
+        @media (max-width: #{$tablet + px}){
+            flex: 0 0 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        } 
+        &::after{
+            content: '';
+            position: absolute;
+            display: block;
+            height: 2px;
+            background-color: $lighterColor;
+            width: 100%;
+            bottom: 0;
+        }
+    }
+
+    // .slider-cards__title_large
+
+    &__title_large {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        & span{
+            color: $lighterColor;
+            text-transform: lowercase;
+        }
+    }
+
+    // .slider-cards__controller
+
+    &__controller {
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        & span{
+            cursor: pointer;
+        }
+    }
+
+    // .slider-cards__button-arrow
+
+    &__button-arrow {
+        &.swiper-button-prev, &.swiper-button-next  {
+            z-index: 1;
+            position: initial;
+            color: $lightColor;
+            margin: 0;
+            
+            &::after{
+                background-color: $mainColor !important;
+                font-size: 25px;
+            }
+        }
+    }
+
+    // .slider-cards__pagination
+
+    &__pagination {
+        transform: translateX(0%) !important;
+        margin: 0 0 0 -26px !important;
+        width: 170px !important;
+    }
+
+    // .slider-cards__slider-list
+
+    &__slider-list {
+        margin-top: 20px;
+    }
+
+    // .slider-cards__slide-item
+
+    &__slide-item {
+    
+    }
+      
+    // .slider-cards__card-body
+
+    &__card-body {
+        // border: 2px solid $secondColor;
+    }
+      
+    & .swiper-pagination-bullet {
+        width: 20px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 18px;
+        border-radius: 5px;
+        color: rgba(255, 255, 255, 0.377);
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.2);
+
+    }
+
+    & .custom-swiper-bullet-btn{
+        position: relative;
+        z-index: 1;
+        width: 20px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 18px;
+        border-radius: 5px;
+        color: rgba(255, 255, 255, 0.377);
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+
+    & .append-buttons{
+        display: flex;
+        position: relative;
+        gap: 10px;
+        background-color: $mainColor !important;
+        z-index: 1 !important;
+    }
+}
