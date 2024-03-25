@@ -29,7 +29,7 @@ export const Cart = ({ cartRef, headerMenuActiveRef }) => {
   return (
     <div className="header__cart cart" ref={cartRef}>
       <div className="cart__controller">
-        <Link to={location.pathname + '?cart'}>
+        <Link to={'/fortnite-api-app/' + location.pathname + '?cart'}>
           <button className="cart__icon">
             <img src={cart} alt="cart" />
             {dailyShop[0] &&
@@ -42,7 +42,7 @@ export const Cart = ({ cartRef, headerMenuActiveRef }) => {
             )}
           </button>
         </Link>
-        <Link to={location.pathname + location.hash}>
+        <Link to={'/fortnite-api-app/' + location.pathname + location.hash}>
           <button className="cart__cross-icon-btn">
             <span></span>
             <span></span>
