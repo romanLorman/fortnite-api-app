@@ -73,4 +73,4 @@ export const Shop = ({ parentBlock }) => {
     </section>
   )
 }
-{/* "homepage": "https://romanLorman.github.io/fortnite-api-app", */}
+
