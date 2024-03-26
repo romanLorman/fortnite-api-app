@@ -36,16 +36,18 @@ export const Shop = ({ parentBlock }) => {
           <FormSearch parentBlock={'shop'} mod="_select" />
           <Routes>
             <Route
-              path="/fortnite-api-app"
-              element={<Navigate to="/fortnite-api-app/shop/products/all/page1" />}
+              path="/*"
+              element={
+                <Navigate to="/shop/products/all/page1" />
+              }
             />
             <Route
-              path="/fortnite-api-app/shop/*"
+              path="/shop/*"
               element={
                 <Routes>
                   <Route
                     // index
-                    path="/fortnite-api-app/products/:sort/:page"
+                    path="/products/:sort/:page"
                     element={
                       <SliderCards
                         parentBlock={'shop'}
@@ -55,12 +57,12 @@ export const Shop = ({ parentBlock }) => {
                     }
                   />
                   <Route
-                    path="/fortnite-api-app/product/:productId"
+                    path="/product/:productId"
                     element={
                       <ItemProduct
-                      sliderCardsRef={sliderCardsRef}
-                      itemProductRef={itemProductRef}
-                      parentBlock={'shop'}
+                        sliderCardsRef={sliderCardsRef}
+                        itemProductRef={itemProductRef}
+                        parentBlock={'shop'}
                       />
                     }
                   />
@@ -73,4 +75,3 @@ export const Shop = ({ parentBlock }) => {
     </section>
   )
 }
-

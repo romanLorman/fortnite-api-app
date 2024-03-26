@@ -22,7 +22,7 @@ export const CardProduct = ({ parentBlock, data }) => {
           style={{ display: !data.offerId && 'none' }}
         >
           <div className="card-product__img">
-            <Link to={`/fortnite-api-app/shop/product/${data.offerId}`}>
+            <Link to={`/shop/product/${data.offerId}`}>
               <div className="card-product__btn">more ...</div>
             </Link>
 

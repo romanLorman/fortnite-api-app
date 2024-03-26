@@ -11,7 +11,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route
-        path="/fortnite-api-app/*"
+        path="/*"
         index
         element={
           <ContextProvider>
