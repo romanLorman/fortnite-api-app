@@ -36,13 +36,11 @@ export const Shop = ({ parentBlock }) => {
           <FormSearch parentBlock={'shop'} mod="_select" />
           <Routes>
             <Route
-              path="/*"
-              element={
-                <Navigate to="/shop/products/all/page1" />
-              }
+              path="/fortnite-api-app/"
+              element={<Navigate to="/fortnite-api-app/shop/products/all/page1" />}
             />
             <Route
-              path="/shop/*"
+              path="/fortnite-api-app/shop/*"
               element={
                 <Routes>
                   <Route
@@ -60,9 +58,9 @@ export const Shop = ({ parentBlock }) => {
                     path="/product/:productId"
                     element={
                       <ItemProduct
-                        sliderCardsRef={sliderCardsRef}
-                        itemProductRef={itemProductRef}
-                        parentBlock={'shop'}
+                      sliderCardsRef={sliderCardsRef}
+                      itemProductRef={itemProductRef}
+                      parentBlock={'shop'}
                       />
                     }
                   />
@@ -75,3 +73,4 @@ export const Shop = ({ parentBlock }) => {
     </section>
   )
 }
+{/* "homepage": "https://romanLorman.github.io/fortnite-api-app", */}

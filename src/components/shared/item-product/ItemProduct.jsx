@@ -47,7 +47,7 @@ export const ItemProduct = ({
           <div className="item-product__breacrumb-nav breacrumb-nav">
             <ul className="breacrumb-nav__list">
               <li>
-                <Link to="/">
+                <Link to="/fortnite-api-app">
                   <div className="breacrumb-nav__link">shop</div>
                 </Link>
               </li>
