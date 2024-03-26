@@ -36,7 +36,7 @@ export const Shop = ({ parentBlock }) => {
           <FormSearch parentBlock={'shop'} mod="_select" />
           <Routes>
             <Route
-              path="/fortnite-api-app/"
+              path="/"
               element={<Navigate to="/fortnite-api-app/shop/products/all/page1" />}
             />
             <Route
