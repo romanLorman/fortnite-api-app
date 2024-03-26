@@ -8,18 +8,18 @@ import { ContextProvider } from 'context/context'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/*"
-          index
-          element={
-            <ContextProvider>
-              <App />
-            </ContextProvider>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Routes>
+      <Route
+        path="/fortnite-api-app/*"
+        index
+        element={
+          <ContextProvider>
+            <App />
+          </ContextProvider>
+        }
+      />
+    </Routes>
+  </BrowserRouter>
   // </React.StrictMode>
 )
