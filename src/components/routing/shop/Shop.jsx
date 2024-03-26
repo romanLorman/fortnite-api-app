@@ -37,10 +37,10 @@ export const Shop = ({ parentBlock }) => {
           <Routes>
             <Route
               path="/"
-              element={<Navigate to="/fortnite-api-app/shop/products/all/page1" />}
+              element={<Navigate to="/shop/products/all/page1" />}
             />
             <Route
-              path="/fortnite-api-app/shop/*"
+              path="/shop/*"
               element={
                 <Routes>
                   <Route
