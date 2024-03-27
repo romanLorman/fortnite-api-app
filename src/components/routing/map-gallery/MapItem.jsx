@@ -55,7 +55,7 @@ export const MapItem = ({ selectRef, selectActive, data }) => {
         >
           <img
             loading="lazy"
-            // decoding="async"
+            decoding="async"
             src={data.urlPOI}
             alt="map-img"
           />
