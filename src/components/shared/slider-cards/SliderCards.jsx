@@ -241,7 +241,7 @@ export const SliderCards = ({
           grabCursor={true}
           modules={[Virtual, Navigation, Pagination]}
           onSlideChange={() => {
-            navigate(`/fortnite-api-app/shop/products/${sort}/page${swiperRef.activeIndex + 1}`)
+            navigate(`/shop/products/${sort}/page${swiperRef.activeIndex + 1}`)
             lastBulletRef.current &&
               firstBulletRef.current &&
               handleFirstLastBullets()

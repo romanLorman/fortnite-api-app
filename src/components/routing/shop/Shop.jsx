@@ -58,9 +58,9 @@ export const Shop = ({ parentBlock }) => {
                     path="/product/:productId"
                     element={
                       <ItemProduct
-                      sliderCardsRef={sliderCardsRef}
-                      itemProductRef={itemProductRef}
-                      parentBlock={'shop'}
+                        sliderCardsRef={sliderCardsRef}
+                        itemProductRef={itemProductRef}
+                        parentBlock={'shop'}
                       />
                     }
                   />
@@ -73,4 +73,3 @@ export const Shop = ({ parentBlock }) => {
     </section>
   )
 }
-{/* "homepage": "https://romanLorman.github.io/fortnite-api-app", */}

@@ -17,7 +17,7 @@ export const FormSearch = ({ parentBlock, mod }) => {
   let startSearch = () => {
     selectedList &&
       itemRef.current.value &&
-      navigate(`/fortnite-api-app/shop/products/${itemRef.current.value}/page1`)
+      navigate(`/shop/products/${itemRef.current.value}/page1`)
   }
   const handleUpSelectList = (e) =>
     setTimeout(() => {
@@ -60,7 +60,7 @@ export const FormSearch = ({ parentBlock, mod }) => {
       <ul className="form-search__select-list" ref={selectListRef}>
         {selectedList.map((product) => (
           <li key={product.offerId + 'selected'} className="form-search__item">
-            <Link to={`/fortnite-api-app/shop/product/${product.offerId}`}>
+            <Link to={`/shop/product/${product.offerId}`}>
               <RowProduct parentBlock={'form-search'} data={product} />
             </Link>
           </li>

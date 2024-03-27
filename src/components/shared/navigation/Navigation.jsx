@@ -10,7 +10,7 @@ export const Navigation = ({ headerMenuActiveRef }) => {
         <li className="menu__item">
           <Scroll.Link
             onClick={() => {
-              navigate('/fortnite-api-app/' + location.pathname + location.hash)
+              navigate(location.pathname + location.hash)
               headerMenuActiveRef.current.classList.remove('_active')
             }}
             className="menu__link"
@@ -27,7 +27,7 @@ export const Navigation = ({ headerMenuActiveRef }) => {
         <li className="menu__item">
           <Scroll.Link
             onClick={() => {
-              navigate('/fortnite-api-app/' + location.pathname + location.hash)
+              navigate(location.pathname + location.hash)
               headerMenuActiveRef.current.classList.remove('_active')
             }}
             className="menu__link"
@@ -45,7 +45,7 @@ export const Navigation = ({ headerMenuActiveRef }) => {
         <li className="menu__item">
           <Scroll.Link
             onClick={() => {
-              navigate('/fortnite-api-app/' + location.pathname + location.hash)
+              navigate(location.pathname + location.hash)
               headerMenuActiveRef.current.classList.remove('_active')
             }}
             className="menu__link"
@@ -63,7 +63,7 @@ export const Navigation = ({ headerMenuActiveRef }) => {
         <li className="menu__item">
           <Scroll.Link
             onClick={() => {
-              navigate('/fortnite-api-app/' + location.pathname + location.hash)
+              navigate(location.pathname + location.hash)
               headerMenuActiveRef.current.classList.remove('_active')
             }}
             className="menu__link"

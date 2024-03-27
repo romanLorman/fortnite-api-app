@@ -98,7 +98,7 @@ export const ContextProvider = ({ children }) => {
               ? 'sparks'
               : product.mainType,
             offerId: product.offerId.substr(4),
-            displayName: product.displayName.split(/\s+/).slice(0, 2).join(' '),
+            displayName: product.displayName,
             cartStatus: false,
             cartStatusNew: false,
             count: 0,

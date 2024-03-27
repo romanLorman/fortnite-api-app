@@ -23,7 +23,7 @@ export const ItemSidebar = ({ data, mod }) => {
       <span
         className={handleMod('menu-sidebar__link', mod)}
         onClick={() =>
-          data.mainType === 'all' && navigate('/fortnite-api-app/shop/products/all/page1')
+          data.mainType === 'all' && navigate('/shop/products/all/page1')
         }
       >
         {data.mainType}
@@ -35,7 +35,7 @@ export const ItemSidebar = ({ data, mod }) => {
         onMouseLeave={() => hoverRef.current.classList.remove('_hover')}
         ref={activeItemRef}
       >
-        <Link to={`/fortnite-api-app/shop/products/${data.mainType}/page1`}>
+        <Link to={`/shop/products/${data.mainType}/page1`}>
           <div className="sub-item-sidebar__body">
             <span className="sub-item-sidebar__title">{data.displayName}</span>
 

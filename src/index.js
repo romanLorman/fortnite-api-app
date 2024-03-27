@@ -7,7 +7,6 @@ import { ContextProvider } from 'context/context'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  // <React.StrictMode>
   <BrowserRouter>
     <Routes>
       <Route
@@ -21,5 +20,5 @@ root.render(
       />
     </Routes>
   </BrowserRouter>
-  // </React.StrictMode>
+
 )

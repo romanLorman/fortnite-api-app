@@ -13,7 +13,7 @@
         & h1{
             // min-width: 10%;
         }
-        & span{
+        & div{
             max-width: 50%;
             text-transform: uppercase;
             font-weight: 800;
@@ -21,6 +21,10 @@
             text-align: center;
             color: $lighterColor;
             font-size: 25px;
+            display: flex;
+            @media (max-width: #{$mobile + px}){
+                max-width: 100%;
+            }
         }
         @media (max-width: #{$mobile + px}){
             gap: 15px;
@@ -61,6 +65,7 @@
     &__main-slider{
         border-left: 1px solid $lightColor;
         border-right: 1px solid $lightColor;
+        position: relative;
     }
 
     //.item-product__thumbs-slider
@@ -96,6 +101,14 @@
         & img{
             width: 100%;
         }
+    }
+
+    //.item-product__skeleton
+    &__skeleton{
+       position: absolute;
+       left: 0;
+       right: 0;
+       z-index: -50;
     }
 
     //.item-product__img

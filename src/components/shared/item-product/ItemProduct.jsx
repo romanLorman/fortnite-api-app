@@ -14,11 +14,9 @@ import { useState, useContext, useEffect } from 'react'
 import { GlobalContext } from 'context/context'
 import { Counter } from '../counter/Counter'
 import { Link, useParams } from 'react-router-dom'
+import ContentLoader from 'react-content-loader'
 
-export const ItemProduct = ({
-  parentBlock,
-  itemProductRef,
-}) => {
+export const ItemProduct = ({ parentBlock, itemProductRef }) => {
   const {
     currentProduct,
     selectCurrentProduct,
@@ -47,7 +45,7 @@ export const ItemProduct = ({
           <div className="item-product__breacrumb-nav breacrumb-nav">
             <ul className="breacrumb-nav__list">
               <li>
-                <Link to="/fortnite-api-app">
+                <Link to="/">
                   <div className="breacrumb-nav__link">shop</div>
                 </Link>
               </li>
@@ -58,13 +56,16 @@ export const ItemProduct = ({
           </div>
           <div className="item-product__top">
             <h1 className="item-product__title_large _lines-overflow_2">
-              {currentProduct.displayName}{' '}
+              {currentProduct.displayName}
             </h1>
-            <span>/{currentProduct.displayType}/</span>{' '}
+            <div>/{currentProduct.displayType}/</div>
             {currentProduct.displayDescription ? (
-              <span className="_lines-overflow">
-                "{currentProduct.displayDescription}"
-              </span>
+              <div>
+                <span className="_lines-overflow">
+                  "{currentProduct.displayDescription}
+                </span>
+                <span>"</span>
+              </div>
             ) : (
               ''
             )}
@@ -79,6 +80,25 @@ export const ItemProduct = ({
                 }}
               >
                 <div className="item-product__main-slider">
+                  <div className="item-product__skeleton">
+                    <ContentLoader
+                      speed={1}
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 100 100"
+                      backgroundColor="#27272f"
+                      foregroundColor="#6D05DD"
+                    >
+                      <rect
+                        x="0"
+                        y="0"
+                        rx="0"
+                        ry="0"
+                        width="100"
+                        height="100"
+                      />
+                    </ContentLoader>
+                  </div>
                   <Swiper
                     speed={1000}
                     onSwiper={setThumbs}
@@ -179,7 +199,7 @@ export const ItemProduct = ({
               </div>
 
               <h3 className="item-product__title_large">
-                granted list:{' '}
+                granted list:
                 <span>
                   {currentProduct.granted[0].images.background ? '' : 'N/A'}
                 </span>

@@ -73,6 +73,14 @@
         }
     }
 
+    &__poster-loader{
+        position: absolute;
+        left: calc(50% - 50px);
+        top: 50%;
+        color: $lighterColor;
+        letter-spacing: 2px;
+    }
+
     & .swiper{
         
     }

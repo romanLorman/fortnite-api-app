@@ -22,13 +22,15 @@ export const Crew = ({ parentBlock }) => {
     <section id="crew" className={`${parentBlock}__crew slider-crew`}>
       <div className="slider-crew__container">
         <div className="slider-crew__title_large">your crew</div>
-        {currentPerson ? (
+        {crew ? (
           <Swiper
             speed={1000}
             spaceBetween={0}
             slidesPerView={5}
             onSlideChange={(swiper) => {
-              setCurrentPerson(crew[swiper.activeIndex])
+              setCurrentPerson(null)
+              setTimeout(()=> setCurrentPerson(crew[swiper.activeIndex]), 100)
+              
             }}
             grabCursor={true}
             navigation={{
@@ -102,7 +104,7 @@ export const Crew = ({ parentBlock }) => {
 
         <div className="slider-crew__content">
           <div className="slider-crew__pagination"></div>
-          {currentPerson ? (
+          {crew ? (
             <div className="slider-crew__item">
               <ContentLoader
                 speed={1}
@@ -114,55 +116,58 @@ export const Crew = ({ parentBlock }) => {
               >
                 <rect x="0" y="0" rx="0" ry="0" width="100" height="55" />
               </ContentLoader>
-              <div className="slider-crew__poster">
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src={currentPerson && currentPerson.images.apiRender}
-                  alt="poster"
-                />
-              </div>
-              <div
-                className="slider-crew__info"
-                style={{
-                  backgroundColor: `#${
-                    currentPerson && currentPerson.colors.B
-                  }60`,
-                }}
-              >
-                <div className="slider-crew__title">
-                  {currentPerson && currentPerson.rewards[0].item.name}
-                </div>
-                <p className="slider-crew__text">
-                  {currentPerson
-                    ? '"' + currentPerson.rewards[0].item.description + '"'
-                    : ''}
-                </p>
-              </div>
+              {currentPerson ? (
+                <>
+                  <div className="slider-crew__poster">
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src={currentPerson.images.apiRender}
+                      alt="poster"
+                    />
+                  </div>
+                  <div
+                    className="slider-crew__info"
+                    style={{
+                      backgroundColor: `#${currentPerson.colors.B}60`,
+                    }}
+                  >
+                    <div className="slider-crew__title">
+                      {currentPerson && currentPerson.rewards[0].item.name}
+                    </div>
+                    <p className="slider-crew__text">
+                      {currentPerson
+                        ? '"' + currentPerson.rewards[0].item.description + '"'
+                        : ''}
+                    </p>
+                  </div>{' '}
+                  <button
+                    className="slider-crew__btn_outline"
+                    onClick={() => _slideToggle(videoWrapRef.current)}
+                  ></button>
+                  <div className="slider-crew__video" ref={videoWrapRef}>
+                    <div
+                      className="slider-crew__cross-icon-btn"
+                      onClick={() => {
+                        videoRef.current.pause()
+                        _slideToggle(videoWrapRef.current)
+                      }}
+                    >
+                      <span></span>
+                      <span></span>
+                    </div>
 
-              <button
-                className="slider-crew__btn_outline"
-                onClick={() => _slideToggle(videoWrapRef.current)}
-              ></button>
-              <div className="slider-crew__video" ref={videoWrapRef}>
-                <div
-                  className="slider-crew__cross-icon-btn"
-                  onClick={() => {
-                    videoRef.current.pause()
-                    _slideToggle(videoWrapRef.current)
-                  }}
-                >
-                  <span></span>
-                  <span></span>
-                </div>
-
-                <video
-                  controls
-                  muted
-                  src={currentPerson && currentPerson.video}
-                  ref={videoRef}
-                />
-              </div>
+                    <video
+                      controls
+                      muted
+                      src={currentPerson && currentPerson.video}
+                      ref={videoRef}
+                    />
+                  </div>
+                </>
+              ) : (
+                <span className='slider-crew__poster-loader'>Loading...</span>
+              )}
             </div>
           ) : (
             <ContentLoader

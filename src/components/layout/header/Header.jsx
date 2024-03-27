@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header className="header" ref={headerMenuActiveRef}>
       <div className="header__container">
-        <Link to='/fortnite-api-app' className="header__logo">
+        <Link to='/' className="header__logo">
           <img src={logo} alt="logo" />
         </Link>
 
