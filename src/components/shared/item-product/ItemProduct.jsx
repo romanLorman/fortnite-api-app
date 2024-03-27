@@ -45,7 +45,7 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
           <div className="item-product__breacrumb-nav breacrumb-nav">
             <ul className="breacrumb-nav__list">
               <li>
-                <Link to="/fortnite-api-app">
+                <Link to="/fortnite-api-app/shop/products/all/page1">
                   <div className="breacrumb-nav__link">shop</div>
                 </Link>
               </li>
