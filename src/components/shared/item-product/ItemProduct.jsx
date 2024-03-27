@@ -15,6 +15,8 @@ import { GlobalContext } from 'context/context'
 import { Counter } from '../counter/Counter'
 import { Link, useParams } from 'react-router-dom'
 import ContentLoader from 'react-content-loader'
+import cartRemoveIcon from 'assets/icons/cart-removed-icon.svg'
+import cartAddIcon from 'assets/icons/cart-added-icon.svg'
 
 export const ItemProduct = ({ parentBlock, itemProductRef }) => {
   const {
@@ -186,14 +188,15 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                     className="item-product__btn"
                     onClick={() => handleToggleToCart(currentProduct)}
                   >
-                    <span>remove from </span> 🛒
+                    <span>remove from </span>
+                    <img src={cartRemoveIcon} alt="cart-remove" />
                   </button>
                 ) : (
                   <button
                     className="item-product__btn"
                     onClick={() => handleToggleToCart(currentProduct)}
                   >
-                    <span>add to</span> 🛒
+                    <span>add to</span> <img src={cartAddIcon} alt="cart-add" />
                   </button>
                 )}
               </div>

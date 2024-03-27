@@ -10,9 +10,6 @@
         align-items: end;
         gap: 45px;
         justify-content: space-between;
-        & h1{
-            // min-width: 10%;
-        }
         & div{
             max-width: 50%;
             text-transform: uppercase;
@@ -136,6 +133,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        & img {
+            width: 30px;
+        }
     }
 
     

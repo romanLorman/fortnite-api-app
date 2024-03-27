@@ -19,7 +19,6 @@
         & img{
             width: 100%;
         }
-        
         cursor: grab;
     }
 
@@ -35,7 +34,17 @@
         gap: 20px;
         justify-content: space-between;
         background: $secondColor;
-        
+        & label:first-child{
+            display: none;
+        }
+        @media (max-width: #{$mobileSmall + px}){
+            & label{
+                display: none;
+            }
+            & label:first-child{
+                display: block;
+            }
+        }
         & span{
             color: $lightColor;
 
@@ -84,8 +93,7 @@
             right: 0;
             letter-spacing: 2px;
             z-index: 1; 
-            // filter: blur(1px);
-          }
+        }
     }
     
     & .swiper-pagination-bullet {
@@ -94,35 +102,30 @@
         color: $lightColor;
         border-radius: 0;
         text-align: center;
-        padding: 0 10px;
+        padding: 4px 10px;
+        height:auto;
     }
       
     & .swiper-pagination_select{
-        display: inline-flex;
+        display: flex;
+        flex-direction: column;
         background-color: $lightSecondColor;
         color: $lightColor;
+        height: 195px;
+        overflow-x: hidden;
+        overflow-y: scroll; 
     }
-
+        
     &__select{
         position: absolute;
+        border-radius: 10px;
         display: none;
-        left: 15px;
+        left: 25px;
         top: 65px;
         z-index: 10;
+        overflow: hidden;
     }
 
-
-    &__fake-img{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            // filter: blur(2px); 
-            z-index: 10; 
-           background-color: $darkColor;
- 
-    }
 }
 
 

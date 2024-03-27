@@ -22,32 +22,24 @@ export const ItemTournament = ({ parentBlock, data }) => {
         }}
         modules={[EffectFlip, Pagination, Navigation]}
       >
-        <SwiperSlide
-          style={{
-            border: `solid 2px #${data.renderData.background_left_color}`,
-          }}
-        >
-          <div className="item-tournament__skeleton">
-            <ContentLoader
-              speed={1}
-              width="100%"
-              height="100%"
-              viewBox="0 0 390 561"
-              backgroundColor="#27272f"
-              foregroundColor="#6D05DD"
-            >
-              <rect x="0" y="0" rx="0" ry="0" width="390" height="561" />
-            </ContentLoader>
-          </div>
+        <SwiperSlide>
           <div className="item-tournament__poster">
-            <img src={data.poster} alt="tournament-poster" loading="lazy" />
+            <div className="item-tournament__skeleton">
+              <ContentLoader
+                speed={1}
+                width="100%"
+                height="100%"
+                viewBox="0 0 390 561"
+                backgroundColor="#27272f"
+                foregroundColor="#6D05DD"
+              >
+                <rect x="0" y="0" rx="0" ry="0" width="390" height="561" />
+              </ContentLoader>
+            </div>
+            <img src={data.poster} alt="tournament-poster" />
           </div>
         </SwiperSlide>
-        <SwiperSlide
-          style={{
-            border: `solid 2px #${data.renderData.poster_fade_color}`,
-          }}
-        >
+        <SwiperSlide>
           <div className="item-tournament__skeleton">
             <ContentLoader
               speed={1}
@@ -75,7 +67,7 @@ export const ItemTournament = ({ parentBlock, data }) => {
                   style={{ color: `#${data.renderData.shadow_color}` }}
                 >
                   <span>
-                    type: {'  '}
+                    type:
                     <div
                       className="item-tournament__type"
                       style={{ color: `#${data.renderData.primary_color}` }}
@@ -85,7 +77,7 @@ export const ItemTournament = ({ parentBlock, data }) => {
                   </span>
 
                   <span>
-                    schedule: {'  '}
+                    schedule:
                     <div
                       className="item-tournament__date"
                       style={{ color: `#${data.renderData.primary_color}` }}

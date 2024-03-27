@@ -3,7 +3,6 @@ import { GlobalContext } from 'context/context'
 import { _slideToggle} from 'assets/js/animation'
 import { SlideNews } from 'components/shared/slide-news/SlideNews'
 import {
-  Autoplay,
   EffectCoverflow,
   Navigation,
   Pagination,
@@ -20,12 +19,6 @@ export const SliderBlock = ({ parentBlock }) => {
   } = useContext(GlobalContext)
   const swiperRef = useRef()
   const eventListRef = useRef()
-  const progressCircle = useRef(null)
-  const progressContent = useRef(null)
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty('--progress', 1 - progress)
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
-  }
 
   return (
     <div className={`${parentBlock}__slider-block slider-block`}>
@@ -38,22 +31,13 @@ export const SliderBlock = ({ parentBlock }) => {
             onClick={(e) => {
               _slideToggle(eventListRef.current)
               e.target.classList.toggle('_active')
-              e.target.classList.contains('_active')
-                ? swiperRef.current.autoplay.stop()
-                : swiperRef.current.autoplay.start()
             }}
           ></span>
-        </div>
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
         </div>
         <ul className="slider-block__event-list" ref={eventListRef}>
           <div className="slider-block__pagination"></div>
           <Swiper
-            modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
+            modules={[EffectCoverflow, Navigation, Pagination]}
             onSwiper={(swiper) => {
               swiperRef.current = swiper
             }}
@@ -62,7 +46,6 @@ export const SliderBlock = ({ parentBlock }) => {
             grabCursor={true}
             centeredSlides={true}
             loop={true}
-            slidesPerView={'auto'}
             pagination={{
               el: '.slider-block__pagination',
               clickable: true,
@@ -73,11 +56,6 @@ export const SliderBlock = ({ parentBlock }) => {
               clickable: true,
               top: '10px',
             }}
-            autoplay={{
-              delay: 5000,
-              pauseOnMouseEnter: true,
-            }}
-            onAutoplayTimeLeft={onAutoplayTimeLeft}
           >
             {newsItems && newsItems.map((news) => (
               <SwiperSlide key={news.id}>

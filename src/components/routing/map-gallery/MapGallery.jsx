@@ -21,11 +21,8 @@ export const MapGallery = ({ parentBlock }) => {
         <div className="map-gallery__title_large">discover maps</div>
         <div className="map-gallery__box" ref={selectActive}>
           <div className="map-gallery__select" ref={selectRef}>
-            <select
-              multiple={true}
-              size={10}
-              className="swiper-pagination_select"
-            ></select>
+            <ul className="swiper-pagination_select">
+            </ul>
           </div>
           {maps ? (
             <Swiper
@@ -49,11 +46,11 @@ export const MapGallery = ({ parentBlock }) => {
                 el: '.swiper-pagination_select',
                 renderBullet: function (index, className) {
                   return (
-                    '<option  class="' +
+                    '<li  class="' +
                     className +
                     '">' +
                     maps[index].releaseDate +
-                    '</option>'
+                    '</li>'
                   )
                 },
                 hideOnClick: true,

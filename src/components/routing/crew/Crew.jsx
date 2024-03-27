@@ -104,7 +104,6 @@ export const Crew = ({ parentBlock }) => {
 
         <div className="slider-crew__content">
           <div className="slider-crew__pagination"></div>
-          {crew ? (
             <div className="slider-crew__item">
               <ContentLoader
                 speed={1}
@@ -166,21 +165,9 @@ export const Crew = ({ parentBlock }) => {
                   </div>
                 </>
               ) : (
-                <span className='slider-crew__poster-loader'>Loading...</span>
+              ''
               )}
             </div>
-          ) : (
-            <ContentLoader
-              speed={1}
-              width="100%"
-              height="100%"
-              viewBox="0 0 100 55"
-              backgroundColor="#27272f"
-              foregroundColor="#6D05DD"
-            >
-              <rect x="0" y="0" rx="0" ry="0" width="100" height="55" />
-            </ContentLoader>
-          )}
         </div>
       </div>
     </section>

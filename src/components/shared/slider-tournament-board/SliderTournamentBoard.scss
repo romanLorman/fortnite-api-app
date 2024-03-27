@@ -1,13 +1,7 @@
 .slider-tournament-board{
-   
-    &__body {
-
-
+    &__loader{
+        padding: 60px 0 80px 0;
     }
-    &__head {
-
-    }
-
     & .swiper-pagination-bullet{
         opacity: 1;
         background-color: $lighterColor;

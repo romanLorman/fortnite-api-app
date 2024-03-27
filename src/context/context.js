@@ -17,7 +17,7 @@ const initialState = {
   currentProduct: null,
   cartProducts: null,
   newsItems: null,
-  tournaments: [],
+  tournaments: null,
   maps: null,
   crew: null,
 }

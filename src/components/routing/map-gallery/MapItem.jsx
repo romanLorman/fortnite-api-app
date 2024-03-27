@@ -5,12 +5,13 @@ export const MapItem = ({ selectRef, selectActive, data }) => {
     <>
       <div className="map-gallery__label">
         <span>
-          Date release:{' '}
+          <label>Release:</label> 
+          <label>Date release:</label> 
           <div className="map-gallery__data">
             {data.releaseDate}
             <span
               className="select-arrow"
-              onClick={(e) => {
+              onClick={() => {
                 if (selectActive.current.classList.contains('_select-active')) {
                   _slideUp(selectRef.current)
                   selectActive.current.classList.remove('_select-active')
@@ -25,7 +26,8 @@ export const MapItem = ({ selectRef, selectActive, data }) => {
           </div>
         </span>
         <span>
-          Patch version:{' '}
+          <label>Patch:</label>
+          <label>Patch version:</label>
           <div className="map-gallery__data">{data.patchVersion}</div>
         </span>
       </div>
