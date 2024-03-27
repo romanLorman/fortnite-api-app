@@ -4,6 +4,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-flip'
+import ContentLoader from 'react-content-loader'
 
 export const ItemTournament = ({ parentBlock, data }) => {
   return (
@@ -26,13 +27,20 @@ export const ItemTournament = ({ parentBlock, data }) => {
             border: `solid 2px #${data.renderData.background_left_color}`,
           }}
         >
+          <div className="item-tournament__skeleton">
+            <ContentLoader
+              speed={1}
+              width="100%"
+              height="100%"
+              viewBox="0 0 390 561"
+              backgroundColor="#27272f"
+              foregroundColor="#6D05DD"
+            >
+              <rect x="0" y="0" rx="0" ry="0" width="390" height="561" />
+            </ContentLoader>
+          </div>
           <div className="item-tournament__poster">
-            <img
-              src={data.poster}
-              alt="tournament-poster"
-              loading="lazy"
-              decoding="async"
-            />
+            <img src={data.poster} alt="tournament-poster" loading="lazy" />
           </div>
         </SwiperSlide>
         <SwiperSlide
@@ -40,6 +48,18 @@ export const ItemTournament = ({ parentBlock, data }) => {
             border: `solid 2px #${data.renderData.poster_fade_color}`,
           }}
         >
+          <div className="item-tournament__skeleton">
+            <ContentLoader
+              speed={1}
+              width="100%"
+              height="100%"
+              viewBox="0 0 390 561"
+              backgroundColor="#27272f"
+              foregroundColor="#6D05DD"
+            >
+              <rect x="0" y="0" rx="0" ry="0" width="390" height="561" />
+            </ContentLoader>
+          </div>
           <div className="item-tournament__background">
             <img src={data.posterBack} alt="tournament-background" />
             <div className="item-tournament__content">
