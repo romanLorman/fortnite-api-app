@@ -5,8 +5,8 @@ export const MapItem = ({ selectRef, selectActive, data }) => {
     <>
       <div className="map-gallery__label">
         <span>
-          <label>Release:</label> 
-          <label>Date release:</label> 
+          <label>Release:</label>
+          <label>Date release:</label>
           <div className="map-gallery__data">
             {data.releaseDate}
             <span
@@ -54,7 +54,8 @@ export const MapItem = ({ selectRef, selectActive, data }) => {
           }}
         >
           <img
-            decoding="async"
+            loading="lazy"
+            // decoding="async"
             src={data.urlPOI}
             alt="map-img"
           />
