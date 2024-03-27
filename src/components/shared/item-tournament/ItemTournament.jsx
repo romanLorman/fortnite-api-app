@@ -53,7 +53,7 @@ export const ItemTournament = ({ parentBlock, data }) => {
             </ContentLoader>
           </div>
           <div className="item-tournament__background">
-            <img src={data.posterBack} alt="tournament-background" />
+            <img src={data.posterBack} alt="tournament-background"  loading="lazy"/>
             <div className="item-tournament__content">
               <div className="item-tournament__head">
                 <div

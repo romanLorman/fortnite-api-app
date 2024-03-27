@@ -79,7 +79,6 @@ export const Crew = ({ parentBlock }) => {
                     <div className="slider-crew__img">
                       <img
                         loading="lazy"
-                        decoding="async"
                         src={person.rewards[0].item.images.full_background}
                         alt="person-icon"
                       />
@@ -120,7 +119,6 @@ export const Crew = ({ parentBlock }) => {
                   <div className="slider-crew__poster">
                     <img
                       loading="lazy"
-                      decoding="async"
                       src={currentPerson.images.apiRender}
                       alt="poster"
                     />
