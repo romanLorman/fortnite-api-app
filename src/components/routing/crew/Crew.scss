@@ -142,14 +142,12 @@
             left: 2px;
             bottom: 2px;
         }
-        @media (max-width: #{$mobile - 200 + px}){
-            font-size: 13px;
-            padding: 4px 2px 4px 5px;
-        }
         @media (max-width: #{$mobileSmall + px}){
+            padding: 10px;
             background-color: $secondColor;
             border: none;
             color: $lightColor;
+            border-radius: 2px;
         }
     }
 
