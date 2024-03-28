@@ -20,15 +20,12 @@ html,
 body {
 	height: 100%;
 	min-width: $minWidth + px;
-	
 }
 body {
 	line-height: 1;
 	font-family: $fontFamily;
-	font-style: normal;
 	font-size: $fontSize;
-	font-weight: 400;
-	text-rendering: optimizeLegibility; // !
+	text-rendering: optimizeLegibility; //
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;

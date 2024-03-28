@@ -4,7 +4,9 @@
     top: 0;
     left: 0;
     z-index: 100;
-
+    font-weight: 500 !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase !important;
     &::after {
       content: '';
       background-color: #23296c56;
