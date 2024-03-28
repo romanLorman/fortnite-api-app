@@ -89,7 +89,7 @@
         padding: 0;
         font-size: 14px;
         & span{
-            max-height: 240px;
+            max-height: 250px;
             width: 100%;
             padding: 5px 10px;
             overflow-y: scroll;
@@ -97,16 +97,16 @@
         }
 
         @media (max-width: #{$pc + px}){
-            max-height: 145px;
+            max-height: 160px;
         } 
         @media (max-width: #{$tablet + px}){
-            max-height: 240px;
+            max-height: 260px;
         } 
         @media (max-width: #{$mobile+ px}){
-            max-height: 222px;
+            max-height: 219px;
         } 
         @media (max-width: #{$mobileSmall  + px}){
-            max-height: 165px;
+            max-height: 161px;
         } 
         @media (max-width: #{$mobileSmall - 100 + px}){
             max-height: 82px;

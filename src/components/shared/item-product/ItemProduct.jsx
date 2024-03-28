@@ -17,7 +17,6 @@ import { Link, useParams } from 'react-router-dom'
 import ContentLoader from 'react-content-loader'
 import cartRemoveIcon from 'assets/icons/cart-removed-icon.svg'
 import cartAddIcon from 'assets/icons/cart-added-icon.svg'
-import * as Scroll from 'react-scroll'
 
 export const ItemProduct = ({ parentBlock, itemProductRef }) => {
   const {
@@ -28,16 +27,6 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
   } = useContext(GlobalContext)
   const [thumbs, setThumbs] = useState(null)
   const { productId } = useParams()
-  const scroller = Scroll.scroller
-
-  const scrollToAnchor = () => {
-    scroller.scrollTo('shop', {
-      duration: 1500,
-      delay: 100,
-      smooth: true,
-      offset: 50,
-    })
-  }
 
   useEffect(() => {
     if (productId && dailyShop[0]) {
@@ -45,7 +34,6 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
         dailyShop.find((product) => product.offerId == productId)
       )
     }
-    scrollToAnchor()
     return () => selectCurrentProduct(null)
   }, [dailyShop, productId])
 

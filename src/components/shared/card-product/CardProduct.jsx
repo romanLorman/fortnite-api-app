@@ -1,7 +1,18 @@
 import ContentLoader from 'react-content-loader'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import * as Scroll from 'react-scroll'
 export const CardProduct = ({ parentBlock, data }) => {
+  const scroller = Scroll.scroller
+  const navigate = useNavigate()
+
+  const scrollToAnchor = () => {
+    scroller.scrollTo('shop', {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+      offset: 50,
+    })
+  }
   return (
     <div className={`${parentBlock}__product card-product`}>
       <div className="card-product__skeleton">
@@ -22,9 +33,15 @@ export const CardProduct = ({ parentBlock, data }) => {
           style={{ display: !data.offerId && 'none' }}
         >
           <div className="card-product__img">
-            <Link to={`/fortnite-api-app/shop/product/${data.offerId}`}>
-              <div className="card-product__btn">more ...</div>
-            </Link>
+            <div
+              className="card-product__btn"
+              onClick={() => {
+                scrollToAnchor()
+                navigate(`/fortnite-api-app/shop/product/${data.offerId}`)
+              }}
+            >
+              more ...
+            </div>
 
             <img
               src={

@@ -71,8 +71,6 @@ export const SliderCards = ({
         } else {
           sortProducts(resortedProducts)
         }
-        
-        
       }
     }
   }, [sort, sortedProducts, currentProduct])
