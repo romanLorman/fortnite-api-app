@@ -52,7 +52,7 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                 </Link>
               </li>
               <li>
-                <Link>product</Link>
+                <Link><div className="breacrumb-nav__link">product</div></Link>
               </li>
             </ul>
           </div>

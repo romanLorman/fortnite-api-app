@@ -18,7 +18,7 @@ export const Footer = () => (
             <img src={mailIcon} alt="mail-icon" />
           </div>
           <div className="social__info">
-            lorman.roman<span>@</span>gmail.com
+            lorman.roman@gmail.com
           </div>
         </li>
         <li className="social__item">

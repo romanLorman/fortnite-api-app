@@ -64,6 +64,10 @@
             font-size: 20px;
             transform: rotate(90deg);
             transition: all 0.3s ease 0s;
+       
+                font-family: monospace;
+                font-weight: 900;
+
             ._select-active & {
                 transition: all 0.3s ease 0s;
                 transform: rotate(-90deg);
@@ -107,6 +111,7 @@
     }
       
     & .swiper-pagination_select{
+        letter-spacing: 1.5px;
         display: flex;
         flex-direction: column;
         background-color: $lightSecondColor;
