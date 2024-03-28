@@ -13,6 +13,7 @@ export const ItemTournament = ({ parentBlock, data }) => {
         speed={1000}
         effect={'flip'}
         grabCursor={true}
+        loop={true}
         pagination={{
           clickable: true,
           renderBullet: (index, className) =>
@@ -53,7 +54,11 @@ export const ItemTournament = ({ parentBlock, data }) => {
             </ContentLoader>
           </div>
           <div className="item-tournament__background">
-            <img src={data.posterBack} alt="tournament-background"  loading="lazy"/>
+            <img
+              src={data.posterBack}
+              alt="tournament-background"
+              loading="lazy"
+            />
             <div className="item-tournament__content">
               <div className="item-tournament__head">
                 <div

@@ -51,7 +51,7 @@ export const ContextProvider = ({ children }) => {
       if (data) {
         dispatch({
           type: 'GET_MAPS',
-          payload: data.maps.reverse().slice(0, 15),
+          payload: data.maps.reverse().slice(0, 14),
         })
       }
     })
@@ -76,7 +76,7 @@ export const ContextProvider = ({ children }) => {
             .filter(
               (tournament) => Date.parse(tournament.beginTime) > currentTime
             )
-            .slice(0, 15),
+            .slice(0, 14),
         })
       }
     })
