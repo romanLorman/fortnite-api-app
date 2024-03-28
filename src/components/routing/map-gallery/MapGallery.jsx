@@ -1,10 +1,10 @@
-import { Zoom, EffectCube, Navigation, Pagination } from 'swiper/modules'
+import { Zoom, EffectCreative, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import 'swiper/css/effect-cube'
 import 'swiper/css/zoom'
+import 'swiper/css/effect-creative'
 import { useRef, useState, useContext } from 'react'
 import { GlobalContext } from 'context/context'
 import { MapItem } from './MapItem'
@@ -21,23 +21,23 @@ export const MapGallery = ({ parentBlock }) => {
         <div className="map-gallery__title_large">discover maps</div>
         <div className="map-gallery__box" ref={selectActive}>
           <div className="map-gallery__select" ref={selectRef}>
-            <ul className="swiper-pagination_select">
-            </ul>
+            <ul className="swiper-pagination_select"></ul>
           </div>
           {maps ? (
             <Swiper
               loop={true}
-              effect={'cube'}
-              speed={1500}
-              modules={[Zoom, EffectCube, Navigation, Pagination]}
+              speed={1000}
+              modules={[Zoom, EffectCreative, Navigation, Pagination]}
               zoom={true}
-              // onSlideChangeTransitionEnd={() => setSwiperRef(true)}
-              // onSlideChangeTransitionStart={() => setSwiperRef(false)}
-              cubeEffect={{
-                shadow: true,
-                slideShadows: true,
-                shadowOffset: 20,
-                shadowScale: 0.94,
+              effect={'creative'}
+              creativeEffect={{
+                prev: {
+                  shadow: true,
+                  translate: [0, 0, -400],
+                },
+                next: {
+                  translate: ['100%', 0, 0],
+                },
               }}
               style={{
                 '--swiper-navigation-color': '#e4e7ec',
@@ -73,16 +73,16 @@ export const MapGallery = ({ parentBlock }) => {
               ))}
             </Swiper>
           ) : (
-              <ContentLoader
-                speed={1}
-                width="100%"
-                height="100%"
-                viewBox="0 0 100 100"
-                backgroundColor="#27272f"
-                foregroundColor="#6D05DD"
-              >
-                <rect x="0" y="0" rx="0" ry="0" width="100" height="100" />
-              </ContentLoader>
+            <ContentLoader
+              speed={1}
+              width="100%"
+              height="100%"
+              viewBox="0 0 100 100"
+              backgroundColor="#27272f"
+              foregroundColor="#6D05DD"
+            >
+              <rect x="0" y="0" rx="0" ry="0" width="100" height="100" />
+            </ContentLoader>
           )}
         </div>
       </div>
