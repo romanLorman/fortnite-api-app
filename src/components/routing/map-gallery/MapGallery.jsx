@@ -31,8 +31,8 @@ export const MapGallery = ({ parentBlock }) => {
               speed={1500}
               modules={[Zoom, EffectCube, Navigation, Pagination]}
               zoom={true}
-              onSlideChangeTransitionEnd={() => setSwiperRef(true)}
-              onSlideChangeTransitionStart={() => setSwiperRef(false)}
+              // onSlideChangeTransitionEnd={() => setSwiperRef(true)}
+              // onSlideChangeTransitionStart={() => setSwiperRef(false)}
               cubeEffect={{
                 shadow: true,
                 slideShadows: true,

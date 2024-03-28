@@ -20,9 +20,7 @@ export const MapItem = ({ selectRef, selectActive, data }) => {
                   selectActive.current.classList.add('_select-active')
                 }
               }}
-            >
-              {'>'}
-            </span>
+            ></span>
           </div>
         </span>
         <span>

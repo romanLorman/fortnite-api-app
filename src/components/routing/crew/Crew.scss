@@ -81,12 +81,7 @@
         letter-spacing: 2px;
     }
 
-    & .swiper{
-        
-    }
-
     & .swiper-pagination-bullet{
-       
         opacity: 1;
         background-color: #cc0ff27a;
         height: 12px;
@@ -98,7 +93,6 @@
     }
 
     & .swiper-button-prev, & .swiper-button-next  {
-
         color: $lightColor;
         @media (max-width: #{$tablet + px}){
            &::after{
@@ -106,6 +100,7 @@
            }
         }
     }
+    
     &__video{
         position: absolute;
         height: 100%;
@@ -163,13 +158,13 @@
         right: 10%;
         top: 10%;
         @media (max-width: #{$mobile  + px}){
-            right: 10px;
+            right: 30px;
             top: 10px;
             height: 25px;
             width: 25px;
         }
         @media (max-width: #{$mobileSmall  + px}){
-            right: 5px;
+            right: 25px;
             top: 5px;
             height: 20px;
             width: 20px;
