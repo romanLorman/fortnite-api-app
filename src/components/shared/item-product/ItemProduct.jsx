@@ -17,6 +17,7 @@ import { Link, useParams } from 'react-router-dom'
 import ContentLoader from 'react-content-loader'
 import cartRemoveIcon from 'assets/icons/cart-removed-icon.svg'
 import cartAddIcon from 'assets/icons/cart-added-icon.svg'
+import * as Scroll from 'react-scroll'
 
 export const ItemProduct = ({ parentBlock, itemProductRef }) => {
   const {
@@ -27,6 +28,16 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
   } = useContext(GlobalContext)
   const [thumbs, setThumbs] = useState(null)
   const { productId } = useParams()
+  const scroller = Scroll.scroller
+
+  const scrollToAnchor = () => {
+    scroller.scrollTo('shop', {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+      offset: 50,
+    })
+  }
 
   useEffect(() => {
     if (productId && dailyShop[0]) {
@@ -34,6 +45,7 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
         dailyShop.find((product) => product.offerId == productId)
       )
     }
+    scrollToAnchor()
     return () => selectCurrentProduct(null)
   }, [dailyShop, productId])
 
@@ -52,7 +64,9 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                 </Link>
               </li>
               <li>
-                <Link><div className="breacrumb-nav__link">product</div></Link>
+                <Link>
+                  <div className="breacrumb-nav__link">product</div>
+                </Link>
               </li>
             </ul>
           </div>
@@ -66,7 +80,7 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                 <span className="_lines-overflow">
                   "{currentProduct.displayDescription}
                 </span>
-                <span>"</span>
+                "
               </div>
             ) : (
               ''
@@ -189,14 +203,21 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                     onClick={() => handleToggleToCart(currentProduct)}
                   >
                     <span>remove from </span>
-                    <img src={cartRemoveIcon} alt="cart-remove" />
+                    <img
+                      src={cartRemoveIcon}
+                      alt="cart-remove"
+                      loading="lazy"
+                    />
                   </button>
                 ) : (
                   <button
                     className="item-product__btn"
                     onClick={() => handleToggleToCart(currentProduct)}
                   >
-                    <span>add to</span> <img src={cartAddIcon} alt="cart-add" />
+                    <>
+                      <span>add to</span>{' '}
+                      <img src={cartAddIcon} alt="cart-add" loading="lazy" />
+                    </>
                   </button>
                 )}
               </div>
