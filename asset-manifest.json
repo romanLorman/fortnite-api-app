@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/fortnite-api-app/static/css/main.d8176ffd.css",
+    "main.js": "/fortnite-api-app/static/js/main.bbfa70a3.js",
+    "static/media/v-bucks-big-icon.svg": "/fortnite-api-app/static/media/v-bucks-big-icon.80655efd520782a49102.svg",
+    "static/media/v-bucks-icon.svg": "/fortnite-api-app/static/media/v-bucks-icon.ec00876bec6bf3723b45.svg",
+    "static/media/logo.svg": "/fortnite-api-app/static/media/logo.67b202c27b4dc052028111e94354726d.svg",
+    "static/media/api-icon.svg": "/fortnite-api-app/static/media/api-icon.06f603264fe418565de9b9a06ec7af58.svg",
+    "static/media/mail-icon.svg": "/fortnite-api-app/static/media/mail-icon.5a9903248575e75b8461cb4bc64687f5.svg",
+    "static/media/cart-icon.svg": "/fortnite-api-app/static/media/cart-icon.c88b9ede3eaea8c7223b239e1770dd69.svg",
+    "static/media/address-icon.svg": "/fortnite-api-app/static/media/address-icon.149efbde7f53ce109d832ed8ef496266.svg",
+    "static/media/phone-icon.svg": "/fortnite-api-app/static/media/phone-icon.e7df12e9566dcd4526efd841d0fcc738.svg",
+    "static/media/unknown-icon.svg": "/fortnite-api-app/static/media/unknown-icon.db6918b14ed7015fc7aaff80498510e6.svg",
+    "static/media/cart-added-icon.svg": "/fortnite-api-app/static/media/cart-added-icon.fcff0d59f13ad4cb269a77c2644b0f9b.svg",
+    "static/media/loupe-icon.svg": "/fortnite-api-app/static/media/loupe-icon.fb2b79a7d7426912e89e.svg",
+    "static/media/cart-removed-icon.svg": "/fortnite-api-app/static/media/cart-removed-icon.adc0284bef66dad19900f09d3161a8a4.svg",
+    "static/media/arrows-icon.svg": "/fortnite-api-app/static/media/arrows-icon.68eb58478d1150a1d743.svg",
+    "index.html": "/fortnite-api-app/index.html",
+    "main.d8176ffd.css.map": "/fortnite-api-app/static/css/main.d8176ffd.css.map",
+    "main.bbfa70a3.js.map": "/fortnite-api-app/static/js/main.bbfa70a3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8176ffd.css",
+    "static/js/main.bbfa70a3.js"
+  ]
+}
