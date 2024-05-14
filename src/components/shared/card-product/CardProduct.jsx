@@ -1,16 +1,17 @@
 import ContentLoader from 'react-content-loader'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import * as Scroll from 'react-scroll'
+
 export const CardProduct = ({ parentBlock, data }) => {
   const scroller = Scroll.scroller
   const navigate = useNavigate()
 
   const scrollToAnchor = () => {
-    scroller.scrollTo('shop', {
-      duration: 1500,
+    scroller.scrollTo('form-search', {
+      duration: 100,
       delay: 100,
       smooth: true,
-      offset: 50,
+      offset: -90,
     })
   }
   return (
@@ -36,8 +37,8 @@ export const CardProduct = ({ parentBlock, data }) => {
             <div
               className="card-product__btn"
               onClick={() => {
-                scrollToAnchor()
                 navigate(`/fortnite-api-app/shop/product/${data.offerId}`)
+                scrollToAnchor()
               }}
             >
               more ...

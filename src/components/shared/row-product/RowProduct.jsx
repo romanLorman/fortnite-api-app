@@ -1,11 +1,14 @@
 import { handleMod } from 'assets/js/animation'
 import { Counter } from 'components/shared/counter/Counter'
-import { useContext } from 'react'
-import { GlobalContext } from 'context/context'
 import unknownIcon from 'assets/icons/unknown-icon.svg'
+import { handleToggleToCart } from 'store/utils'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectDailyShop } from 'store/shop/shop-selectors'
+import { addDailyShopProducts } from 'store/shop/shop-actions'
 
 export const RowProduct = ({ parentBlock, data, contentExtra = false,}) => {
-  const { handleToggleToCart } = useContext(GlobalContext)
+  const dailyShop = useSelector(selectDailyShop)
+  const dispatch = useDispatch()
   return (
     <div
       className={`${parentBlock}__row-product ${
@@ -37,7 +40,7 @@ export const RowProduct = ({ parentBlock, data, contentExtra = false,}) => {
         </span>
         <button
           className="row-product__cross-icon-btn"
-          onClick={() => handleToggleToCart(data)}
+          onClick={() => dispatch(addDailyShopProducts(handleToggleToCart(dailyShop, data)))}
         >
           <span></span>
           <span></span>

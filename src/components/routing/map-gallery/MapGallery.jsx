@@ -5,13 +5,14 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css/zoom'
 import 'swiper/css/effect-creative'
-import { useRef, useState, useContext } from 'react'
-import { GlobalContext } from 'context/context'
+import { useRef, useState } from 'react'
 import { MapItem } from './MapItem'
 import ContentLoader from 'react-content-loader'
+import { useSelector } from 'react-redux'
+import { selectMaps } from 'store/maps/maps-selectors'
 
 export const MapGallery = ({ parentBlock }) => {
-  const { maps } = useContext(GlobalContext)
+  const maps = useSelector(selectMaps)
   const selectRef = useRef()
   const selectActive = useRef()
   const [swiperRef, setSwiperRef] = useState(true)

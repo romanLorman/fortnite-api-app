@@ -3,26 +3,26 @@ import { FormSearch } from 'components/shared/form-search/FormSearch'
 import { Sidebar } from 'components/shared/sidebar/Sidebar'
 import { SliderBlock } from 'components/shared/slider-block/SliderBlock'
 import { ItemProduct } from 'components/shared/item-product/ItemProduct'
-import { useContext, useEffect, useRef } from 'react'
-import { GlobalContext } from 'context/context'
+import { useEffect, useRef } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { loadDailyShop} from 'store/shop/shop-actions'
+import { loadMaps } from 'store/maps/maps-actions'
+import { loadCrew } from 'store/crew/crew-actions'
+import { loadTournaments } from 'store/tournaments/tournaments-actions'
+import { loadNews } from 'store/news/news-actons'
 
 export const Shop = ({ parentBlock }) => {
+  const dispatch = useDispatch()
   const sliderCardsRef = useRef()
   const itemProductRef = useRef()
-  const {
-    dailyShopLoading,
-    createNews,
-    createTournaments,
-    createMaps,
-    createCrewItems,
-  } = useContext(GlobalContext)
+
   useEffect(() => {
-    dailyShopLoading()
-    createTournaments()
-    createNews()
-    createMaps()
-    createCrewItems()
+    dispatch(loadDailyShop())
+    dispatch(loadNews())
+    dispatch(loadMaps())
+    dispatch(loadCrew())
+    dispatch(loadTournaments())
   }, [])
 
   return (

@@ -7,13 +7,15 @@ import 'swiper/css/navigation'
 import cart from './icons/cart-icon.svg'
 import { RowProduct } from '../row-product/RowProduct'
 import { Link, useLocation } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
-import { GlobalContext } from 'context/context'
+import { useEffect } from 'react'
+import { selectShop } from 'store/shop/shop-selectors'
+import { useDispatch, useSelector } from 'react-redux'
+import { sortProductsByType } from 'store/shop/shop-actions'
 
 export const Cart = ({ cartRef, headerMenuActiveRef }) => {
-  const { dailyShop, sortProducts } = useContext(GlobalContext)
   const location = useLocation()
-
+  const dispatch = useDispatch()
+  const { dailyShop } = useSelector(selectShop)
   useEffect(() => {
     if (location.search) {
       cartRef.current.classList.add('cart_active')
@@ -21,7 +23,9 @@ export const Cart = ({ cartRef, headerMenuActiveRef }) => {
     } else {
       dailyShop[0] &&
         dailyShop.find((p) => p.cartStatusNew) &&
-        sortProducts(dailyShop.map((p) => (p.cartStatusNew = false)))
+        dispatch(
+          sortProductsByType(dailyShop.map((p) => (p.cartStatusNew = false)))
+        )
       cartRef.current.classList.remove('cart_active')
     }
   }, [location.search])
@@ -97,15 +101,20 @@ export const Cart = ({ cartRef, headerMenuActiveRef }) => {
             </Swiper>
             <div className="cart__bottom">
               <div className="cart__total-price">
-                Total :
+                Total price:
                 <span>
-                  {dailyShop[0] &&
-                    dailyShop.reduce((accumulator, currentItem, index) => {
-                      return (
-                        accumulator +
-                        currentItem.price.finalPrice * currentItem.count
-                      )
-                    }, 0)}
+                  {dailyShop[0]
+                    ? dailyShop.reduce((accumulator, currentItem) => {
+                        if (currentItem.cartStatus) {
+                          return (
+                            accumulator +
+                            currentItem.price.finalPrice * currentItem.count
+                          )
+                        } else {
+                          return accumulator
+                        }
+                      }, 0)
+                    : '0'}
                 </span>
               </div>
               <div className="cart__pagination-controller">

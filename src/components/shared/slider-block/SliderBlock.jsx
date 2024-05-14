@@ -1,22 +1,17 @@
-import { useContext,useRef } from 'react'
-import { GlobalContext } from 'context/context'
-import { _slideToggle} from 'assets/js/animation'
+import { useRef } from 'react'
+import { _slideToggle } from 'assets/js/animation'
 import { SlideNews } from 'components/shared/slide-news/SlideNews'
-import {
-  EffectCoverflow,
-  Navigation,
-  Pagination,
-} from 'swiper/modules'
+import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import { useSelector } from 'react-redux'
+import { selectNews } from 'store/news/news-selectors'
 
 export const SliderBlock = ({ parentBlock }) => {
-  const {
-    newsItems
-  } = useContext(GlobalContext)
+  const news = useSelector(selectNews)
   const swiperRef = useRef()
   const eventListRef = useRef()
 
@@ -24,9 +19,7 @@ export const SliderBlock = ({ parentBlock }) => {
     <div className={`${parentBlock}__slider-block slider-block`}>
       <div className="slider-block__body">
         <div className="slider-block__header">
-          <div className="slider-block__title_large">
-            news
-          </div>
+          <div className="slider-block__title_large">news</div>
           <span
             onClick={(e) => {
               _slideToggle(eventListRef.current)
@@ -57,11 +50,12 @@ export const SliderBlock = ({ parentBlock }) => {
               top: '10px',
             }}
           >
-            {newsItems && newsItems.map((news) => (
-              <SwiperSlide key={news.id}>
-                <SlideNews parentBlock={'slider-block'} data={news} />
-              </SwiperSlide>
-            ))}
+            {news &&
+              news.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <SlideNews parentBlock={'slider-block'} data={item} />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ul>
       </div>

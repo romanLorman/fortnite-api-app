@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react'
 import { ItemSidebar } from './sidebar-item/ItemSidebar'
 import { _slideToggle } from 'assets/js/animation'
-import { useContext } from 'react'
-import { GlobalContext } from 'context/context'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectShop } from 'store/shop/shop-selectors'
+import { addTypeList } from 'store/shop/shop-actions'
 
 export const Sidebar = ({ parentBlock }) => {
   const sideMenuActiveRef = useRef()
   const menuListRef = useRef()
-  const { dailyShop, createSortedList, sortedList } = useContext(GlobalContext)
+  const dispatch = useDispatch()
+  const { dailyShop, typeListProducts } = useSelector(selectShop)
   useEffect(() => {
     if (dailyShop[0]) {
       let shopTypes = [{ offerId: 'allProducts', mainType: 'all' }]
@@ -16,7 +18,7 @@ export const Sidebar = ({ parentBlock }) => {
           (product, i) => dailyShop[index].mainType === product.mainType
         ) && shopTypes.push(dailyShop[index])
       }
-      createSortedList(shopTypes)
+      dispatch(addTypeList(shopTypes))
     }
   }, [dailyShop])
 
@@ -42,8 +44,8 @@ export const Sidebar = ({ parentBlock }) => {
       </div>
 
       <ul className="menu-sidebar__list" ref={menuListRef}>
-        {sortedList &&
-          sortedList.map((item, index) => (
+        {typeListProducts &&
+          typeListProducts.map((item, index) => (
             <ItemSidebar
               key={item.offerId}
               data={item}

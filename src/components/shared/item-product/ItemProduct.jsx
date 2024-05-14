@@ -10,31 +10,31 @@ import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
-import { useState, useContext, useEffect } from 'react'
-import { GlobalContext } from 'context/context'
+import { useState, useEffect } from 'react'
 import { Counter } from '../counter/Counter'
 import { Link, useParams } from 'react-router-dom'
 import ContentLoader from 'react-content-loader'
 import cartRemoveIcon from 'assets/icons/cart-removed-icon.svg'
 import cartAddIcon from 'assets/icons/cart-added-icon.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCurrentProduct, sortProductsByType } from 'store/shop/shop-actions'
+import { selectShop } from 'store/shop/shop-selectors'
+import { handleToggleToCart } from 'store/utils'
 
 export const ItemProduct = ({ parentBlock, itemProductRef }) => {
-  const {
-    currentProduct,
-    selectCurrentProduct,
-    dailyShop,
-    handleToggleToCart,
-  } = useContext(GlobalContext)
   const [thumbs, setThumbs] = useState(null)
   const { productId } = useParams()
-
+  const dispatch = useDispatch()
+  const { dailyShop, currentProduct } = useSelector(selectShop)
   useEffect(() => {
     if (productId && dailyShop[0]) {
-      selectCurrentProduct(
-        dailyShop.find((product) => product.offerId == productId)
+      dispatch(
+        addCurrentProduct(
+          dailyShop.find((product) => product.offerId == productId)
+        )
       )
     }
-    return () => selectCurrentProduct(null)
+    return () => dispatch(addCurrentProduct(null))
   }, [dailyShop, productId])
 
   return (
@@ -188,7 +188,13 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                   <button
                     style={{ backgroundColor: '#EC5863' }}
                     className="item-product__btn"
-                    onClick={() => handleToggleToCart(currentProduct)}
+                    onClick={() =>
+                      dispatch(
+                        sortProductsByType(
+                          handleToggleToCart(dailyShop, currentProduct)
+                        )
+                      )
+                    }
                   >
                     <span>remove from </span>
                     <img
@@ -200,7 +206,13 @@ export const ItemProduct = ({ parentBlock, itemProductRef }) => {
                 ) : (
                   <button
                     className="item-product__btn"
-                    onClick={() => handleToggleToCart(currentProduct)}
+                    onClick={() =>
+                      dispatch(
+                        sortProductsByType(
+                          handleToggleToCart(dailyShop, currentProduct)
+                        )
+                      )
+                    }
                   >
                     <>
                       <span>add to</span>{' '}

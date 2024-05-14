@@ -1,14 +1,16 @@
-import { useContext} from 'react'
-import { GlobalContext } from 'context/context'
+import { useDispatch, useSelector } from 'react-redux'
+import { sortProductsByType } from 'store/shop/shop-actions'
+import { selectDailyShop } from 'store/shop/shop-selectors'
 
 export const Counter = ({ parentBlock, productId }) => {
-  const { dailyShop,sortProducts} = useContext(GlobalContext)
+  const dailyShop = useSelector(selectDailyShop)
+  const dispatch = useDispatch()
 
-  const handleToggleCount = (simbol) => {
+  const handleToggleCount = (symbol) => {
     const productById = dailyShop.find(
       (product) => product.offerId === productId
     )
-    switch (simbol) {
+    switch (symbol) {
       case 'plus':
         ++productById.count
         break
@@ -16,7 +18,7 @@ export const Counter = ({ parentBlock, productId }) => {
         productById.count > 0 && --productById.count
         break
       default:
-        productById.count = simbol
+        productById.count = symbol
         break
     }
 
@@ -24,7 +26,7 @@ export const Counter = ({ parentBlock, productId }) => {
       productById.cartStatus = false
       productById.cartStatusNew = false
     }
-    sortProducts(dailyShop)
+    dispatch(sortProductsByType(dailyShop))
   }
   return (
     <div className={`${parentBlock}__counter counter`}>
@@ -40,8 +42,12 @@ export const Counter = ({ parentBlock, productId }) => {
             autoComplete="off"
             type="text"
             name="form[]"
-            onChange={(e) => handleToggleCount(e.target.value >= 0 ? e.target.value : 0)}
-            value={dailyShop.find((product) => product.offerId === productId).count}
+            onChange={(e) =>
+              handleToggleCount(e.target.value >= 0 ? e.target.value : 0)
+            }
+            value={
+              dailyShop.find((product) => product.offerId === productId).count
+            }
           />
         </div>
         <span

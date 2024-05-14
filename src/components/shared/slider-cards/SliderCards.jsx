@@ -5,23 +5,20 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { CardProduct } from '../card-product/CardProduct'
-import { useContext, useEffect, useRef, useState } from 'react'
-import { GlobalContext } from 'context/context'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectShop } from 'store/shop/shop-selectors'
+import { sortProductsByType } from 'store/shop/shop-actions'
 
 export const SliderCards = ({
   parentBlock,
   sliderCardsRef,
   itemProductRef,
 }) => {
-  const {
-    dailyShop,
-    sortedList,
-    currentProduct,
-    sortedProducts,
-    sortProducts,
-  } = useContext(GlobalContext)
-
+  const dispatch = useDispatch()
+  const { dailyShop, typeListProducts, sortedProductsByType, currentProduct } =
+    useSelector(selectShop)
   const [swiperRef, setSwiperRef] = useState(null)
   const firstBulletRef = useRef()
   const lastBulletRef = useRef()
@@ -30,7 +27,7 @@ export const SliderCards = ({
   const { sort, page } = useParams()
   const navigate = useNavigate()
   const [slides, setSlides] = useState(
-    Array.from({ length: sortedProducts.length }).map(
+    Array.from({ length: sortedProductsByType.length }).map(
       (_, index) => `Slide ${index + 1}`
     )
   )
@@ -38,15 +35,12 @@ export const SliderCards = ({
   useEffect(() => {
     if (swiperRef) {
       swiperRef.slideTo(page.split('page')[1] - 1)
-      if (sortedProducts.length < 36) {
-        paginationRef.current.style.padding = '0 20px 0 35px'
-        lastBulletRef.current.style.display = 'none'
-      } else {
-        paginationRef.current.style.padding = '0'
-      }
-      if (
-        sortedList &&
-        !sortedList.find((product) => product.mainType === sort)
+      handleFirstLastBullets()
+      if (sort === 'all') {
+        dispatch(sortProductsByType(dailyShop))
+      } else if (
+        typeListProducts &&
+        !typeListProducts.find((product) => product.mainType === sort)
       ) {
         let products = dailyShop.filter((product) =>
           product.displayName
@@ -54,69 +48,54 @@ export const SliderCards = ({
             .toLowerCase()
             .match(new RegExp(sort.replace(/\s/g, '').toLowerCase()))
         )
-        sortProducts(products)
-      } else if (sort === 'all') {
-        sortProducts(dailyShop)
+        dispatch(sortProductsByType(products))
       } else if (dailyShop[0]) {
-        const resortedProducts = dailyShop.filter(
+        const resortedProductsByType = dailyShop.filter(
           (product) => product.mainType === sort
         )
-        let checking;
-        if (resortedProducts.length===sortedProducts.length) {
-          checking =resortedProducts.filter(
-          (p, i) => p.offerId === sortedProducts[i].offerId
-        )
-        checking.length != sortedProducts.length &&
-          sortProducts(resortedProducts)
+        let checking
+        if (resortedProductsByType.length === sortedProductsByType.length) {
+          checking = resortedProductsByType.filter(
+            (p, i) => p.offerId === sortedProductsByType[i].offerId
+          )
+          checking.length != sortedProductsByType.length &&
+            dispatch(sortProductsByType(resortedProductsByType))
         } else {
-          sortProducts(resortedProducts)
+          dispatch(sortProductsByType(resortedProductsByType))
         }
       }
     }
-  }, [sort, sortedProducts, currentProduct])
+  }, [
+    sort,
+    sortedProductsByType.length,
+    currentProduct,
+    typeListProducts,
+    page,
+  ])
 
   const handleFirstLastBullets = () => {
-    if (swiperRef.previousIndex < swiperRef.activeIndex) {
-      if (swiperRef.activeIndex >= 0 && swiperRef.activeIndex < 5) {
-        firstBulletRef.current.style.display = 'none'
-        return (
-          sortedProducts.length > 36 &&
-          (lastBulletRef.current.style.display = 'flex')
-        )
-      }
-      if (
-        swiperRef.activeIndex > Math.ceil(sortedProducts.length / 6) - 4 &&
-        swiperRef.activeIndex <= Math.ceil(sortedProducts.length / 6) - 1
-      ) {
-        if (sortedProducts.length > 36) {
-          firstBulletRef.current.style.display = 'flex'
-        }
-
-        return (lastBulletRef.current.style.display = 'none')
-      }
+    if (sortedProductsByType.length <= 36) {
+      paginationRef.current.style.padding = '0 20px 0 35px'
+      paginationRef.current.style.width = '210px'
+      lastBulletRef.current.style.display = 'none'
+      firstBulletRef.current.style.display = 'none'
+      return
     }
-    if (swiperRef.previousIndex > swiperRef.activeIndex) {
-      if (swiperRef.activeIndex >= 0 && swiperRef.activeIndex < 3) {
-        firstBulletRef.current.style.display = 'none'
-        return (
-          sortedProducts.length > 36 &&
-          (lastBulletRef.current.style.display = 'flex')
-        )
-      }
-      if (
-        swiperRef.activeIndex > Math.ceil(sortedProducts.length / 6) - 6 &&
-        swiperRef.activeIndex <= Math.ceil(sortedProducts.length / 6) - 2
-      ) {
-        if (sortedProducts.length > 36) {
-          firstBulletRef.current.style.display = 'flex'
-        }
-
-        return (lastBulletRef.current.style.display = 'none')
-      }
+    paginationRef.current.style.width = '170px'
+    paginationRef.current.style.padding = '0'
+    if (swiperRef.activeIndex > 4) {
+      firstBulletRef.current.style.display = 'flex'
+    } else {
+      firstBulletRef.current.style.display = 'none'
     }
-
-    firstBulletRef.current.style.display = 'flex'
-    lastBulletRef.current.style.display = 'flex'
+    if (
+      swiperRef.activeIndex <
+      Math.ceil(sortedProductsByType.length / 6) - 5
+    ) {
+      lastBulletRef.current.style.display = 'flex'
+    } else {
+      lastBulletRef.current.style.display = 'none'
+    }
   }
 
   const prepend = () => {
@@ -192,11 +171,7 @@ export const SliderCards = ({
 
         <div className="slider-cards__controller">
           <button className="slider-cards__button-arrow slider-cards__button-arrow_prev swiper-button-prev"></button>
-          <p
-            className="append-buttons"
-            ref={firstBulletRef}
-            style={{ display: 'none' }}
-          >
+          <p className="append-buttons" ref={firstBulletRef}>
             <span
               className="custom-swiper-bullet-btn"
               onClick={() => slideTo(1)}
@@ -209,13 +184,7 @@ export const SliderCards = ({
           </p>
 
           <span ref={paginationRef} className="slider-cards__pagination"></span>
-          <p
-            className="append-buttons"
-            ref={lastBulletRef}
-            style={{
-              display: sortedProducts.length < 30 ? 'none' : 'flex',
-            }}
-          >
+          <p className="append-buttons" ref={lastBulletRef}>
             <span
               onClick={() => prepend()}
               className="custom-swiper-bullet-btn"
@@ -224,9 +193,11 @@ export const SliderCards = ({
             </span>
             <span
               className="custom-swiper-bullet-btn"
-              onClick={() => slideTo(Math.ceil(sortedProducts.length / 6))}
+              onClick={() =>
+                slideTo(Math.ceil(sortedProductsByType.length / 6))
+              }
             >
-              {Math.ceil(sortedProducts.length / 6)}
+              {Math.ceil(sortedProductsByType.length / 6)}
             </span>
           </p>
 
@@ -238,12 +209,13 @@ export const SliderCards = ({
           onSwiper={setSwiperRef}
           grabCursor={true}
           modules={[Virtual, Navigation, Pagination]}
-          onSlideChange={() => {
-            navigate(`/fortnite-api-app/shop/products/${sort}/page${swiperRef.activeIndex + 1}`)
-            lastBulletRef.current &&
-              firstBulletRef.current &&
-              handleFirstLastBullets()
-          }}
+          onSlideChange={() =>
+            navigate(
+              `/fortnite-api-app/shop/products/${sort}/page${
+                swiperRef.activeIndex + 1
+              }`
+            )
+          }
           centeredSlides={true}
           spaceBetween={30}
           pagination={{
@@ -252,7 +224,7 @@ export const SliderCards = ({
             renderBullet: (index, className) =>
               `<span class="${className}">${index + 1}</span>`,
             dynamicBullets: true,
-            dynamicMainBullets: sortedProducts.length <= 30 ? 5 : 3,
+            dynamicMainBullets: sortedProductsByType.length <= 36 ? 6 : 3,
           }}
           virtual
           navigation={{
@@ -261,7 +233,7 @@ export const SliderCards = ({
             clickable: true,
           }}
         >
-          {handleSlidePacker(sortedProducts, 6)}
+          {handleSlidePacker(sortedProductsByType, 6)}
         </Swiper>
       </div>
     </div>

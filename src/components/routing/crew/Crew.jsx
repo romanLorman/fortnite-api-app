@@ -4,12 +4,13 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { _slideToggle } from 'assets/js/animation'
-import { useRef, useState, useContext, useEffect } from 'react'
-import { GlobalContext } from 'context/context'
+import { useRef, useState, useEffect } from 'react'
 import ContentLoader from 'react-content-loader'
+import { useSelector } from 'react-redux'
+import { selectCrew } from 'store/crew/crew-selectors'
 
 export const Crew = ({ parentBlock }) => {
-  const { crew } = useContext(GlobalContext)
+  const crew = useSelector(selectCrew)
   const [currentPerson, setCurrentPerson] = useState(null)
   const videoWrapRef = useRef()
   const videoRef = useRef()

@@ -1,0 +1,1 @@
+export const selectCrew = (state) => state.crew

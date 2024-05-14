@@ -7,7 +7,7 @@ export const TournamentBoard = ({ parentBlock }) => {
       className={`${parentBlock}__tournament-board tournament-board`}
     >
       <div className="tournament-board__container">
-        <div className="tournament-board__title_large">current tournaments</div>
+        <div className="tournament-board__title_large">tournaments</div>
         <SliderTournamentBoard
           parentBlock={'tournament-board'}
         />

@@ -1,21 +1,26 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { _slideDown, _slideUp, handleMod } from 'assets/js/animation'
 import { RowProduct } from '../row-product/RowProduct'
-import { GlobalContext } from 'context/context'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectShop } from 'store/shop/shop-selectors'
+import { sortProductsBySearch } from 'store/shop/shop-actions'
 
 export const FormSearch = ({ parentBlock, mod }) => {
-  const { dailyShop, selectedList, selectProducts } = useContext(GlobalContext)
+  const dispatch = useDispatch()
+  const { dailyShop, sortedProductsBySearch } = useSelector(selectShop)
   const selectListRef = useRef()
   const itemRef = useRef()
   const navigate = useNavigate()
 
   useEffect(() => {
-    selectedList.length && _slideDown(selectListRef.current)
-  }, [selectedList])
+    sortedProductsBySearch &&
+      sortedProductsBySearch.length &&
+      _slideDown(selectListRef.current)
+  }, [sortedProductsBySearch])
 
   let startSearch = () => {
-    selectedList &&
+    sortedProductsBySearch &&
       itemRef.current.value &&
       navigate(`/fortnite-api-app/shop/products/${itemRef.current.value}/page1`)
   }
@@ -27,6 +32,7 @@ export const FormSearch = ({ parentBlock, mod }) => {
 
   return (
     <div
+      id="form-search"
       className={`${parentBlock}__form-search ${handleMod('form-search', mod)}`}
     >
       <div className="form-search__input">
@@ -50,7 +56,8 @@ export const FormSearch = ({ parentBlock, mod }) => {
                   new RegExp(e.target.value.replace(/\s/g, '').toLowerCase())
                 )
             )
-            selectProducts(selectedProducts)
+
+            dispatch(sortProductsBySearch(selectedProducts))
           }}
         />
       </div>
@@ -58,13 +65,17 @@ export const FormSearch = ({ parentBlock, mod }) => {
         search
       </button>
       <ul className="form-search__select-list" ref={selectListRef}>
-        {selectedList.map((product) => (
-          <li key={product.offerId + 'selected'} className="form-search__item">
-            <Link to={`/fortnite-api-app/shop/product/${product.offerId}`}>
-              <RowProduct parentBlock={'form-search'} data={product} />
-            </Link>
-          </li>
-        ))}
+        {sortedProductsBySearch &&
+          sortedProductsBySearch.map((product) => (
+            <li
+              key={product.offerId + 'selected'}
+              className="form-search__item"
+            >
+              <Link to={`/fortnite-api-app/shop/product/${product.offerId}`}>
+                <RowProduct parentBlock={'form-search'} data={product} />
+              </Link>
+            </li>
+          ))}
       </ul>
     </div>
   )

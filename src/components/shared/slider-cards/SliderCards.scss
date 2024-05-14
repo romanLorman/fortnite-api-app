@@ -67,7 +67,7 @@
     &__pagination {
         transform: translateX(0%) !important;
         margin: 0 0 0 -26px !important;
-        width: 170px !important;
+        width: 170px ;
     }
 
     // .slider-cards__slider-list
@@ -117,7 +117,7 @@
 
 
     & .append-buttons{
-        display: flex;
+        display: none;
         position: relative;
         gap: 10px;
         background-color: $mainColor !important;
