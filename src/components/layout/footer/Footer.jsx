@@ -37,7 +37,7 @@ export const Footer = () => (
         </li>
       </ul>
       <div className="footer__copy">
-        <span>© 2022 - Roman Lorman.</span> <span>Design by Roman Lorman</span>
+        <span>© 2024 - Roman Lorman.</span> <span>Design by Roman Lorman</span>
       </div>
     </div>
   </footer>
