@@ -4,13 +4,11 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { ItemTournament } from '../item-tournament/ItemTournament'
-import ContentLoader from 'react-content-loader'
 import { useSelector } from 'react-redux'
 import { selectTournaments } from 'store/tournaments/tournaments-selectors'
 
 export const SliderTournamentBoard = ({ parentBlock }) => {
   const tournaments = useSelector(selectTournaments)
-  const tournamentsLoaders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
   return (
     <div className={`${parentBlock}__slider slider-tournament-board`}>
       <div className="slider-tournament-board__body">
@@ -67,33 +65,9 @@ export const SliderTournamentBoard = ({ parentBlock }) => {
             },
           }}
         >
-          {tournaments
-            ? tournaments.map((t, i) => (
-                <SwiperSlide key={t.id + i}>
+          {tournaments.map((t, i) => (
+                <SwiperSlide key={t ? t.id : 'tournament' + i}>
                   <ItemTournament parentBlock={'slider-tournaments'} data={t} />
-                </SwiperSlide>
-              ))
-            : tournamentsLoaders.map((t, i) => (
-                <SwiperSlide key={t + i}>
-                  <div className="slider-tournament-board__loader">
-                    <ContentLoader
-                      speed={1}
-                      width="100%"
-                      height="100%"
-                      viewBox="0 0 390 561"
-                      backgroundColor="#27272f"
-                      foregroundColor="#6D05DD"
-                    >
-                      <rect
-                        x="0"
-                        y="0"
-                        rx="0"
-                        ry="0"
-                        width="390"
-                        height="561"
-                      />
-                    </ContentLoader>
-                  </div>
                 </SwiperSlide>
               ))}
         </Swiper>
@@ -101,3 +75,4 @@ export const SliderTournamentBoard = ({ parentBlock }) => {
     </div>
   )
 }
+
