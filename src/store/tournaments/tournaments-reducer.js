@@ -1,4 +1,19 @@
-export const tournamentsReducer = (state = null, action) => {
+export const tournamentsReducer = (state = [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ], action) => {
   switch (action.type) {
     case 'ADD_TOURNAMENTS':
       return action.tournaments
