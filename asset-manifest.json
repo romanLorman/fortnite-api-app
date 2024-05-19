@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fortnite-api-app/static/css/main.e5a6f96e.css",
-    "main.js": "/fortnite-api-app/static/js/main.79a10974.js",
+    "main.css": "/fortnite-api-app/static/css/main.1cc15d41.css",
+    "main.js": "/fortnite-api-app/static/js/main.27573253.js",
     "static/media/v-bucks-big-icon.svg": "/fortnite-api-app/static/media/v-bucks-big-icon.80655efd520782a49102.svg",
     "static/media/v-bucks-icon.svg": "/fortnite-api-app/static/media/v-bucks-icon.ec00876bec6bf3723b45.svg",
     "static/media/logo.svg": "/fortnite-api-app/static/media/logo.67b202c27b4dc052028111e94354726d.svg",
@@ -16,11 +16,11 @@
     "static/media/cart-removed-icon.svg": "/fortnite-api-app/static/media/cart-removed-icon.adc0284bef66dad19900f09d3161a8a4.svg",
     "static/media/arrows-icon.svg": "/fortnite-api-app/static/media/arrows-icon.68eb58478d1150a1d743.svg",
     "index.html": "/fortnite-api-app/index.html",
-    "main.e5a6f96e.css.map": "/fortnite-api-app/static/css/main.e5a6f96e.css.map",
-    "main.79a10974.js.map": "/fortnite-api-app/static/js/main.79a10974.js.map"
+    "main.1cc15d41.css.map": "/fortnite-api-app/static/css/main.1cc15d41.css.map",
+    "main.27573253.js.map": "/fortnite-api-app/static/js/main.27573253.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5a6f96e.css",
-    "static/js/main.79a10974.js"
+    "static/css/main.1cc15d41.css",
+    "static/js/main.27573253.js"
   ]
 }
